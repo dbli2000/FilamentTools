@@ -1,7 +1,11 @@
 # FilamentTools
- Tools for processing cryoEM data of filaments
+ Tools for processing cryoEM data of filaments. 
+ - FiTSuite_typecluster allows for clustering and selection of particle groups
+ - FiTSuite_summarygenerator produces dataset summaries once types are separated (and optionally map slices after refinement/post-processing)
 
-All scripts contain everything they need to run standalone, but in order to avoid dependency errors it is probably a good idea to use a virtual environment set up either with venv or conda. An example of one way to set up such a virtual environment is below:
+Note that this is not yet compatible with the newly released Jupyter Notebook 7, so either stick with 6 or try NbClassic (not yet tested). 
+
+All scripts are self-contained, but in order to avoid dependency errors it is probably a good idea to use a virtual environment set up either with venv or conda. An example of one way to set up such a virtual environment is below:
 
 
 ## Virtual Environment Setup
