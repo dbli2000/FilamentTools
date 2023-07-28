@@ -25,7 +25,7 @@ When done running the Jupyter notebook and shutting down the server, you can dea
 After you have done this once, next time just run `jupyter notebook`, and change kernel to `FiTSuite` again
 
 ### *LMB instructions*
-The easiest way is to source from my home directory -> `source lmb/home/dli/FiTSuite/bin/activate.csh`. Then run `jupyter notebook` and open the file
+The easiest way is to source from my home directory -> `source /lmb/home/dli/FiTSuite/bin/activate.csh`. Then run `jupyter notebook` and open the file
 
 The following is a simple way to set up an virtual environment with venv if you don't know how to:
 - Run the following commands in a new terminal from your LMB home directory:
