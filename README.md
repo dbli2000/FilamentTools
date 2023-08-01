@@ -1,11 +1,14 @@
 # FilamentTools
  Tools for processing cryoEM data of filaments. 
  - FiTSuite_typecluster allows for clustering and selection of particle groups
+  - Can run on RELION Class2D or Select jobs post 2D classification
+  - Example processing, data, and, output provided in FiTSuite, ExampleData, and ExampleOutput folders respectively
+  - Run time < 1 minute on a 2017 MacBook pro, even faster on a Linux Cluster.
  - FiTSuite_summarygenerator produces dataset summaries once types are separated (and optionally map slices after refinement/post-processing) (up soon)
 
-Note that this is not yet compatible with the newly released Jupyter Notebook 7, so either stick with 6 or try NbClassic (not yet tested). 
+Note that this is not yet compatible with the newly released Jupyter Notebook 7, so either stick with 6 or try NbClassic (not yet tested). Have tested on Mac, Macbook, and Unix systems. 
 
-All scripts are self-contained, but in order to avoid dependency errors it is probably a good idea to use a virtual environment set up either with venv or conda. An example of one way to set up such a virtual environment is below:
+Should be ready to go once you clone/download the repo. All scripts are self-contained, but in order to avoid dependency errors it is probably a good idea to use a virtual environment set up either with venv or conda. An example of one way to set up such a virtual environment is below:
 
 
 ## Virtual Environment Setup
