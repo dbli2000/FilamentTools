@@ -20,9 +20,9 @@ The following is a simple way to set up an virtual environment with venv if you 
     - `source FiTSuite/bin/activate.csh` or `source FiTSuite/bin/activate`
     - `python3 -m pip install -U -r requirements.txt` (with the correct path to the requirements.txt in this repo, could also be pip3)
     - `python3 -m ipykernel install --user --name=FiTSuite`
-- Run the command `jupyter notebook` or `python3 -m notebook` or whatever you normally do and open this notebook
+- Run the command `jupyter notebook` or `python3 -m notebook` or whatever you normally do and open the relevant notebook (this is probably /FiTSuite/FiTSuite_typecluster_v0_072723-Template.ipynb)
     - If you choose to just install jupyterlab, FiTSuite is currrently incompatible with JupyterLab 4 due to plotly issues... use JupyterLab 3 e.g. `pip install jupyterlab==3`
-- Upon reopening, choose FiTSuite as Kernel by going to `Kernel > Change kernel > FiTSuite`
+- Upon opening, choose FiTSuite as Kernel by going to `Kernel > Change kernel > FiTSuite`
 
 When done running the Jupyter notebook and shutting down the server, you can deactivate the virtual environment with `deactivate` in terminal
 
