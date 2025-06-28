@@ -450,8 +450,14 @@ def typecluster_compute_dendrogram_threshold_labels(clustered: sns.matrix.Cluste
     col_clustered_labels = fcluster(clustered.dendrogram_col.linkage, t=threshold, criterion='distance')
     
     # Compute figure
-    col_color_labels = convert_labels_to_colors(col_clustered_labels)
-    labeled_clustered = clusterplot_counts_df(counts_df, filepath = output_path, savefig = savefig, dpi = dpi,
+    # Pass output_path to convert_labels_to_colors for saving the legend
+    legend_filepath = Path(output_path) / f"dendrogram_threshold_{threshold}"
+    col_color_labels = convert_labels_to_colors(col_clustered_labels, verbose=True, filepath=str(legend_filepath))
+
+    # Ensure output_path for clusterplot_counts_df is just the directory for the main plot
+    clusterplot_filepath = Path(output_path) / f"dendrogram_threshold_{threshold}_clustered"
+
+    labeled_clustered = clusterplot_counts_df(counts_df, filepath = str(clusterplot_filepath), savefig = savefig, dpi = dpi,
                                               row_linkage = clustered.dendrogram_row.linkage, col_linkage = clustered.dendrogram_col.linkage,
                                               col_colors = col_color_labels, vmax = vmax, cmap = cmap, standardize = standardize,
                                               figsize_x = figsize_x, figsize_y = figsize_y, label_fontsize = label_fontsize, 
@@ -460,9 +466,10 @@ def typecluster_compute_dendrogram_threshold_labels(clustered: sns.matrix.Cluste
 
     return col_clustered_labels, labeled_clustered
 
-def convert_labels_to_colors(labels, color_dict: dict = None, plot_legend: bool = True, verbose: bool = True) -> list:
+def convert_labels_to_colors(labels, color_dict: dict = None, plot_legend: bool = True, verbose: bool = True, filepath: str = None) -> list:
     '''
     Converts a list of labels (ints) to a list of colors either through a specificed color_dict or by uniform sampling
+    If plot_legend is True and filepath is provided, saves the legend as a PNG file.
     '''
     counted_labels = Counter(labels)
     if verbose:
@@ -504,7 +511,17 @@ def convert_labels_to_colors(labels, color_dict: dict = None, plot_legend: bool 
         
         # Adjust spacing between subplots
         plt.subplots_adjust(hspace=0.5, wspace=0.1)
-        #plt.show()
+
+        if filepath is not None:
+            legend_filename = f"{filepath}_legend.png"
+            try:
+                fig.savefig(legend_filename, dpi=150, bbox_inches='tight')
+                if verbose:
+                    print(f"Legend saved to {legend_filename}")
+            except Exception as e:
+                if verbose:
+                    print(f"Failed to save legend: {e}")
+        #plt.show() # Usually not needed in script context, but useful for debugging
     
     return colors
 
